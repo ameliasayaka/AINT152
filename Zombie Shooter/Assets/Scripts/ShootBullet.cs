@@ -18,6 +18,7 @@ public class ShootBullet : MonoBehaviour {
 	void Fire()
     {
         isFiring = true;
+        
         Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
 
         if (GetComponent<AudioSource>() != null)

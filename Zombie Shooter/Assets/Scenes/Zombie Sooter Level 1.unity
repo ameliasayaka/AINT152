@@ -279,6 +279,7 @@ GameObject:
   - component: {fileID: 406792124}
   - component: {fileID: 406792123}
   - component: {fileID: 406792129}
+  - component: {fileID: 406792130}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Untagged
@@ -421,6 +422,23 @@ MonoBehaviour:
     type: 2}
   bulletSpawn: {fileID: 548011014}
   fireTime: 0.3
+--- !u!95 &406792130
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 406792122}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 86603ed38f21e6f47b2f1071b9d72ed2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &548011013
 GameObject:
   m_ObjectHideFlags: 0
@@ -543,7 +561,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 406792128}
-  smoothing: 10
+  smoothing: 5
 --- !u!1 &981437437
 GameObject:
   m_ObjectHideFlags: 0
@@ -577,6 +595,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
+  explosionPrefab: {fileID: 1463541049693256, guid: c1c227f7466b3084d8f821cea0f8e650,
+    type: 2}
+  adjustExplosionAngle: 270
 --- !u!50 &981437439
 Rigidbody2D:
   serializedVersion: 4
