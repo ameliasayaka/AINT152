@@ -5,7 +5,6 @@ using UnityEngine;
 public class GameUI : MonoBehaviour {
 
     private int health;
-    private int score;
     private string gameInfo = "";
 
     private Rect boxRect = new Rect(10, 10, 300, 50);
@@ -13,13 +12,13 @@ public class GameUI : MonoBehaviour {
     private void OnEnable()
     {
         PlayerBehaviour.OnUpdateHealth += HandleonUpdateHealth;
-        AddScore.OnSendScore += HandleonSendScore;
+       
     }
 
     private void OnDisable()
     {
         PlayerBehaviour.OnUpdateHealth -= HandleonUpdateHealth;
-        AddScore.OnSendScore -= HandleonSendScore;
+      
     }
 
     // Use this for initialization
@@ -33,15 +32,11 @@ public class GameUI : MonoBehaviour {
         UpdateUI();
     }
 
-    void HandleonSendScore(int theScore)
-    {
-        score += theScore;
-        UpdateUI();
-    }
+ 
 	
 	// Update is called once per frame
 	void UpdateUI () {
-        gameInfo = "Score: " + score.ToString() + "\nHealth: " + health.ToString();
+        gameInfo = "\nHealth: " + health.ToString();
 		
 	}
 
