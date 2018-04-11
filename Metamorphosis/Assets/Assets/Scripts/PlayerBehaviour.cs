@@ -6,6 +6,8 @@ public class PlayerBehaviour : MonoBehaviour {
 
     public delegate void UpdateHealth(int newHealth);
     public static event UpdateHealth OnUpdateHealth;
+
+    SpriteRenderer sr;
     //public GameObject explosionPrefab;
     //public float adjustExplosionAngle = 0.0f;
 
@@ -16,7 +18,7 @@ public class PlayerBehaviour : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         gunAnim = GetComponent<Animator>();
-
+        sr = GetComponent<SpriteRenderer>();
         SendHealthData();
 		
 	}
@@ -40,6 +42,8 @@ public class PlayerBehaviour : MonoBehaviour {
         health -= damage;
         //Quaternion newRot = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z + adjustExplosionAngle);
         //Instantiate(explosionPrefab, transform.position, newRot);
+
+        sr.color = new Color(2, 0, 0);
         SendHealthData();
 
         if (health <= 0)
@@ -59,5 +63,10 @@ public class PlayerBehaviour : MonoBehaviour {
         {
             OnUpdateHealth(health);
         }
+    }
+
+    private void FixedUpdate()
+    {
+        sr.color = Color.Lerp(sr.color, Color.white, Time.deltaTime);
     }
 }
