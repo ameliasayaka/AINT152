@@ -7,6 +7,7 @@ public class EnemyBehaviour : MonoBehaviour {
     public int health = 300;
     private int maxHealth;
     public GameObject powerOrbPrefab;
+    public GameObject deathExplosionPrefab;
     public RectTransform healthBar;
     SpriteRenderer sr;
 
@@ -28,6 +29,7 @@ public class EnemyBehaviour : MonoBehaviour {
 
             Destroy(gameObject);
 
+            Instantiate(deathExplosionPrefab, transform.position, newRot);
             Instantiate(powerOrbPrefab, transform.position, newRot);
         }
     }

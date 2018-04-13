@@ -9,35 +9,34 @@ public class PlayerBehaviour : MonoBehaviour {
     public static event UpdateHealth OnUpdateHealth;
 
     SpriteRenderer sr;
-    //public GameObject explosionPrefab;
-    //public float adjustExplosionAngle = 0.0f;
+ 
 
     public int health = 100;
   
     public RectTransform healthBar;
 
-    private Animator gunAnim;
+    private Animator moveAnim;
 
 	// Use this for initialization
 	void Start () {
-        gunAnim = GetComponent<Animator>();
+        moveAnim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
            
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		//if(Input.GetMouseButtonDown(0))
-  //      {
-  //          GetComponent<AudioSource>().Play();
-  //          GetComponent<Animator>().SetBool("isFiring", true);
-  //      }
-        
-  //      if (Input.GetMouseButtonUp(0))
-  //      {
-  //          GetComponent<Animator>().SetBool("isFiring", false);
-  //      }
-	}
+        if (Input.anyKey)
+        {
+            //GetComponent<AudioSource>().Play();
+            GetComponent<Animator>().SetBool("isMoving", true);
+        }
+
+        if (Input.anyKey == false)
+        {
+            GetComponent<Animator>().SetBool("isMoving", false);
+        }
+    }
 
     public void TakeDamage(int damage)
     {
