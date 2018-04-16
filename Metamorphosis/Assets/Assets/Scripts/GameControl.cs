@@ -11,18 +11,18 @@ public class GameControl : MonoBehaviour {
     
 	// Use this for initialization
 	void Awake () {
-        if (control == null)
-        {
-            DontDestroyOnLoad(gameObject);
-            control = this;
-        }
-       else if (control != this)
-        {
-            Destroy(gameObject);
-        }
+        //if (control == null)
+        //{
+        //    DontDestroyOnLoad(gameObject);
+        //    control = this;
+        //}
+        //else if (control != this)
+        //{
+        //    Destroy(gameObject);
+        //}
 
-    
-	}
+
+    }
     private void Start()
     {
         if (SceneManager.GetActiveScene().buildIndex > 2)
