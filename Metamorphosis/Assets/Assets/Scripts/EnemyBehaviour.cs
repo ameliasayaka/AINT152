@@ -11,17 +11,28 @@ public class EnemyBehaviour : MonoBehaviour {
     public RectTransform healthBar;
     SpriteRenderer sr;
 
+    float _timeColliding;
+    public float damageTime = 3.0f;
+
     private void Start()
     {
         sr = GetComponent<SpriteRenderer>();
         maxHealth = health;
+        _timeColliding = 0;
     }
     public void TakeDamage(int damage)
     {
-        health -= damage;
-        sr.color = new Color(2, 0, 0);
-        healthBar.sizeDelta = new Vector2(health/(maxHealth/100), healthBar.sizeDelta.y);
-        sr.color = new Color(2, 0, 0);
+        if (_timeColliding > 0)
+        {
+            _timeColliding -= Time.deltaTime;
+        }
+        else
+        {
+            health -= damage;
+            sr.color = new Color(2, 0, 0);
+            healthBar.sizeDelta = new Vector2(health / (maxHealth / 100), healthBar.sizeDelta.y);
+            _timeColliding = damageTime;
+        }
 
         if (health <= 0)
         {

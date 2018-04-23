@@ -7,6 +7,8 @@ public class PlayerBehaviour : MonoBehaviour {
 
     public delegate void UpdateHealth(int newHealth);
     public static event UpdateHealth OnUpdateHealth;
+    float _timeColliding;
+    public float damageTime = 3.0f;
 
     SpriteRenderer sr;
  
@@ -21,6 +23,7 @@ public class PlayerBehaviour : MonoBehaviour {
 	void Start () {
         moveAnim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
+        _timeColliding = 0;
            
 	}
 	
@@ -40,13 +43,20 @@ public class PlayerBehaviour : MonoBehaviour {
 
     public void TakeDamage(int damage)
     {
-        health -= damage;
+        if (_timeColliding > 0)
+        {
+            _timeColliding -= Time.deltaTime;
+        }
+        else
+        {
+            health -= damage;
+            sr.color = new Color(2, 0, 0);
+            healthBar.sizeDelta = new Vector2(health, healthBar.sizeDelta.y);
+            _timeColliding = damageTime;
+        }
         //Quaternion newRot = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z + adjustExplosionAngle);
         //Instantiate(explosionPrefab, transform.position, newRot);
-
-        sr.color = new Color(2, 0, 0);
-        healthBar.sizeDelta = new Vector2(health,healthBar.sizeDelta.y);
-        SendHealthData();
+        //SendHealthData();
 
         if (health <= 0)
         {
