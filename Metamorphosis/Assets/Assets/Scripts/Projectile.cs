@@ -6,6 +6,8 @@ public class Projectile : MonoBehaviour {
 
     public float speed = 5.0f;
     public float destroyTime = 0.7f;
+    public float speedReduction = 0.5f;
+    public bool isSlowing = false;
 
     private Collider2D objectCollider;
     // Use this for initialization
@@ -30,17 +32,21 @@ public class Projectile : MonoBehaviour {
         speed = 0;
         GetComponent<Rigidbody2D>().isKinematic = true;
         objectCollider.isTrigger = true;
+        Debug.Log("Is on trigger",gameObject);
     }
     // Update is called once per frame
     void FixedUpdate()
     {
         if (speed > 0)
         {
-            speed -= 0.01f;
+            speed -= speedReduction;
         }
         else
         {
-            BecomeOnTrigger();
+            if (isSlowing)
+            {
+                BecomeOnTrigger();
+            }
         }
         GetComponent<Rigidbody2D>().velocity = transform.up * speed;
     }
