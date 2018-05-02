@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
+    public MyScriptableObjectClass scriptableObject;
     public void StartGame()
     {
       SceneManager.LoadScene("Level1");
@@ -27,11 +28,16 @@ public class GameManager : MonoBehaviour {
 
     public void ReloadScene()
     {
-        SceneManager.LoadScene(GameControl.currentLevelBuildNumber);
+        SceneManager.LoadScene(scriptableObject.currentLevelBuildNumber);
     }
 
     public void LoadNextScene()
     {
-        SceneManager.LoadScene(GameControl.currentLevelBuildNumber+1);
+        SceneManager.LoadScene(scriptableObject.currentLevelBuildNumber + 1);
+    }
+
+    public void SaveLevel()
+    {
+        scriptableObject.currentLevelBuildNumber = SceneManager.GetActiveScene().buildIndex;
     }
 }
