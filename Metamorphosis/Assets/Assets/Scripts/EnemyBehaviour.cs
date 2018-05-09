@@ -14,19 +14,18 @@ public class EnemyBehaviour : MonoBehaviour {
     float _timeColliding;
     public float damageTime = 3.0f;
 
+
     private void Start()
     {
         sr = GetComponent<SpriteRenderer>();
         maxHealth = health;
         _timeColliding = 0;
+
+      
     }
     public void TakeDamage(int damage)
     {
-        if (_timeColliding > 0)
-        {
-            _timeColliding -= Time.deltaTime;
-        }
-        else
+       if(_timeColliding == 0)
         {
             health -= damage;
             sr.color = new Color(2, 0, 0);
@@ -48,6 +47,15 @@ public class EnemyBehaviour : MonoBehaviour {
     private void FixedUpdate()
     {
         sr.color = Color.Lerp(sr.color, Color.white, Time.deltaTime);
+        if (_timeColliding > 0)
+        {
+            _timeColliding -= Time.deltaTime;
+        }
+        else if(_timeColliding < 0)
+        {
+            _timeColliding = 0;
+        }
+
     }
 }
 

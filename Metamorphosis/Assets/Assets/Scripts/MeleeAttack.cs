@@ -19,19 +19,26 @@ public class MeleeAttack : MonoBehaviour {
     {
         if (collision.tag == targetTag)
         {
-            if (timer > 0)
+           
+            if (timer == 0)
             {
-                timer -= Time.deltaTime;
-            }
-            else
-            {
+                GetComponent<Animator>().SetBool("isHitting", true);
                 collision.gameObject.SendMessage("TakeDamage", damage);
                 timer = meleeCooldown;
+               
             }
         }
     }
     // Update is called once per frame
-    void Update () {
-		
-	}
+    void FixedUpdate () {
+        if (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            GetComponent<Animator>().SetBool("isHitting", false);
+        }
+        else if (timer < 0)
+        {
+            timer = 0;
+        }
+    }
 }

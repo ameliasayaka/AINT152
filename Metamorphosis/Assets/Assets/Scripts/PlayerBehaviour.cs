@@ -24,8 +24,8 @@ public class PlayerBehaviour : MonoBehaviour {
         moveAnim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
         timer = 0;
-           
-	}
+        GameObject.Find("Game System").GetComponent<GameManager>().SaveLevel();
+    }
 	
 	// Update is called once per frame
 	void Update () {

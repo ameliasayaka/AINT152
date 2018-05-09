@@ -10,10 +10,14 @@ public class SlowingProjectileHit : MonoBehaviour {
     public float slowAmount = 5;
     public GameObject slowVictim;
 
+    float timer;
+    public float damageTime = 3.0f;
+
     private float maxSpeed;
     private void Start()
     {
         maxSpeed = slowVictim.GetComponent<TopDownCharacterController2D>().speed;
+        timer = 0;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -28,9 +32,17 @@ public class SlowingProjectileHit : MonoBehaviour {
     {
         if(other.CompareTag(damageTag))
         {
+            if (timer > 0)
+            {
+                timer -= Time.deltaTime;
+            }
+            else
+            {
+                other.SendMessage("TakeDamage", damage);
+                other.GetComponent<TopDownCharacterController2D>().speed /= slowAmount;
 
-            other.SendMessage("TakeDamage", damage);
-            other.GetComponent<TopDownCharacterController2D>().speed /= slowAmount;
+                timer = 0;
+            }
         }
 
         

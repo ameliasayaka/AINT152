@@ -40,4 +40,9 @@ public class GameManager : MonoBehaviour {
     {
         scriptableObject.currentLevelBuildNumber = SceneManager.GetActiveScene().buildIndex;
     }
+
+    public void SaveLevel(int i)
+    {
+        scriptableObject.currentLevelBuildNumber = i;
+    }
 }

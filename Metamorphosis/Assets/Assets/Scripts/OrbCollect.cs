@@ -9,7 +9,7 @@ public class OrbCollect : MonoBehaviour {
     {
         if(collision.gameObject.tag == "Player")
         {
-            GetComponent<GameManager>().SaveLevel();
+            GetComponent<GameManager>().SaveLevel(SceneManager.GetActiveScene().buildIndex + 1);
             SceneManager.LoadScene("Victory");
         }
     }
