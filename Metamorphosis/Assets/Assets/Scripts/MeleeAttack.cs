@@ -5,7 +5,7 @@ using UnityEngine;
 public class MeleeAttack : MonoBehaviour {
 
     public int damage;
-    public string targetTag = "Player";
+    public string targetTag = "";
     public float meleeCooldown = 2.0f;
 
     float timer;

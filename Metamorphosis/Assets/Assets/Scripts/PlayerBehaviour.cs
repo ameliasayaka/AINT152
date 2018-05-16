@@ -51,7 +51,7 @@ public class PlayerBehaviour : MonoBehaviour {
         {
             health -= damage;
             sr.color = new Color(2, 0, 0);
-            healthBar.sizeDelta = new Vector2(health, healthBar.sizeDelta.y);
+            //healthBar.sizeDelta = new Vector2(health, healthBar.sizeDelta.y);
             timer = damageTime;
         }
         //Quaternion newRot = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z + adjustExplosionAngle);
@@ -80,5 +80,6 @@ public class PlayerBehaviour : MonoBehaviour {
     private void FixedUpdate()
     {
         sr.color = Color.Lerp(sr.color, Color.white, Time.deltaTime);
+        healthBar.sizeDelta = new Vector2(health, healthBar.sizeDelta.y);
     }
 }

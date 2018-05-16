@@ -32,7 +32,6 @@ public class Projectile : MonoBehaviour {
         speed = 0;
         GetComponent<Rigidbody2D>().isKinematic = true;
         objectCollider.isTrigger = true;
-        Debug.Log("Is on trigger",gameObject);
     }
     // Update is called once per frame
     void FixedUpdate()
