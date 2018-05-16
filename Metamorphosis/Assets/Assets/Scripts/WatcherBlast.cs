@@ -27,6 +27,8 @@ public class WatcherBlast : MonoBehaviour {
         spotlight.color = attackColour;
         spotlight.cookie = spotlightCookie;
 
+        Debug.Log("ChangeLight");
+
         Invoke("ReturnToNormal", returnTime);
     }
 
@@ -37,7 +39,7 @@ public class WatcherBlast : MonoBehaviour {
         spotlight.cookie = null;
     }
     // Update is called once per frame
-    void FixedUpdate () {
+    void Update () {
 		
         if (meleeAttackScript.IsHitting)
         {
