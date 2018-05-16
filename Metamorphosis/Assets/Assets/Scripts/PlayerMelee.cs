@@ -27,7 +27,7 @@ public class PlayerMelee : MonoBehaviour {
         isHitting = false;
         iconScript.coolingDown = false;
         hitAlready = false;
-        //GetComponent<Animator>().SetBool("isHitting", false);
+        GetComponent<Animator>().SetBool("isHitting", false);
     }
 
     void Melee()
@@ -55,8 +55,8 @@ public class PlayerMelee : MonoBehaviour {
                 if (isHitting == false)
                 {
                     Melee();
-                    //GetComponent<Animator>().SetBool("isHitting", true);
-                }
+                    GetComponent<Animator>().SetBool("isHitting", true);
+            }
             }
     }
 }

@@ -26,20 +26,6 @@ public class PlayerBehaviour : MonoBehaviour {
         timer = 0;
         GameObject.Find("Game System").GetComponent<GameManager>().SaveLevel();
     }
-	
-	// Update is called once per frame
-	void Update () {
-        if (Input.anyKey)
-        {
-            //GetComponent<AudioSource>().Play();
-            GetComponent<Animator>().SetBool("isMoving", true);
-        }
-
-        if (Input.anyKey == false)
-        {
-            GetComponent<Animator>().SetBool("isMoving", false);
-        }
-    }
 
     public void TakeDamage(int damage)
     {
@@ -79,6 +65,15 @@ public class PlayerBehaviour : MonoBehaviour {
 
     private void FixedUpdate()
     {
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+        {
+            //GetComponent<AudioSource>().Play();
+            GetComponent<Animator>().SetBool("isMoving", true);
+        }
+        else
+        {
+            GetComponent<Animator>().SetBool("isMoving", false);
+        }
         sr.color = Color.Lerp(sr.color, Color.white, Time.deltaTime);
         healthBar.sizeDelta = new Vector2(health, healthBar.sizeDelta.y);
     }

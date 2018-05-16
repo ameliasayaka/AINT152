@@ -8,6 +8,7 @@ public class MeleeAttack : MonoBehaviour {
     public string targetTag = "";
     public float meleeCooldown = 2.0f;
 
+    private bool isHitting;
     float timer;
     // Use this for initialization
     void Start () {
@@ -24,17 +25,25 @@ public class MeleeAttack : MonoBehaviour {
             {
                 GetComponent<Animator>().SetBool("isHitting", true);
                 collision.gameObject.SendMessage("TakeDamage", damage);
+                isHitting = true;
                 timer = meleeCooldown;
                
             }
         }
     }
+
+    public bool IsHitting
+    {
+        get { return isHitting; }
+    }
+
     // Update is called once per frame
     void FixedUpdate () {
         if (timer > 0)
         {
             timer -= Time.deltaTime;
             GetComponent<Animator>().SetBool("isHitting", false);
+            isHitting = false;
         }
         else if (timer < 0)
         {
