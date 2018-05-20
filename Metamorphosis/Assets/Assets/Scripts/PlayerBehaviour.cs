@@ -69,10 +69,12 @@ public class PlayerBehaviour : MonoBehaviour {
         {
             //GetComponent<AudioSource>().Play();
             GetComponent<Animator>().SetBool("isMoving", true);
+            GetComponent<AudioSource>().Play();
         }
         else
         {
             GetComponent<Animator>().SetBool("isMoving", false);
+            GetComponent<AudioSource>().Pause();
         }
         sr.color = Color.Lerp(sr.color, Color.white, Time.deltaTime);
         healthBar.sizeDelta = new Vector2(health, healthBar.sizeDelta.y);

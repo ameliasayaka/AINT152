@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: b2ca7b66dfe36144ca2d6fa578c8b273
+timeCreated: 1526649571
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Fancy Card Text
+  fontNames:
+  - Fancy Card Text
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

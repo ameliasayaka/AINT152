@@ -9,5 +9,6 @@ public class SpawnObject : MonoBehaviour {
 	public void Spawn()
     {
         Instantiate(objectPrefab, transform.position, transform.rotation);
+
     }
 }

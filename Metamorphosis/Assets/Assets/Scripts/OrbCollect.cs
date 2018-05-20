@@ -5,11 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class OrbCollect : MonoBehaviour {
 
+    public GameObject gameManager;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Player")
         {
-            GetComponent<GameManager>().SaveLevel(SceneManager.GetActiveScene().buildIndex + 1);
+            gameManager.GetComponent<GameManager>().SaveLevel((SceneManager.GetActiveScene().buildIndex + 1));
             SceneManager.LoadScene("Victory");
         }
     }

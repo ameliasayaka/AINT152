@@ -6,9 +6,31 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
 
     public MyScriptableObjectClass scriptableObject;
+    public GameObject pauseCanvas;
+    public GameObject startCanvas;
+    public GameObject gameCanvas;
+
+    private void Start()
+    {
+        Time.timeScale = 0;
+    }
     public void StartGame()
     {
       SceneManager.LoadScene("Level1");
+    }
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+        pauseCanvas.SetActive(true);
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1;
+        gameCanvas.SetActive(true);
+        pauseCanvas.SetActive(false);
+        startCanvas.SetActive(false);
     }
 	
     public void EndGame()
@@ -33,7 +55,7 @@ public class GameManager : MonoBehaviour {
 
     public void LoadNextScene()
     {
-        SceneManager.LoadScene(scriptableObject.currentLevelBuildNumber + 1);
+        SceneManager.LoadScene(scriptableObject.currentLevelBuildNumber);
     }
 
     public void SaveLevel()

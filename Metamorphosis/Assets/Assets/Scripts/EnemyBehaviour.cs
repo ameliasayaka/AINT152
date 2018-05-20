@@ -9,6 +9,8 @@ public class EnemyBehaviour : MonoBehaviour {
     public GameObject powerOrbPrefab;
     public GameObject deathExplosionPrefab;
     public RectTransform healthBar;
+    public GameObject soundObject;
+
     SpriteRenderer sr;
 
     float _timeColliding;
@@ -31,6 +33,11 @@ public class EnemyBehaviour : MonoBehaviour {
             sr.color = new Color(2, 0, 0);
             healthBar.sizeDelta = new Vector2(health / (maxHealth / 100), healthBar.sizeDelta.y);
             _timeColliding = damageTime;
+
+            if (soundObject != null)
+            {
+                soundObject.GetComponent<AudioSource>().Play();
+            }
         }
 
         if (health <= 0)

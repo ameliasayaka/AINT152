@@ -7,12 +7,15 @@ public class MeleeAttack : MonoBehaviour {
     public int damage;
     public string targetTag = "";
     public float meleeCooldown = 2.0f;
+    AudioSource hitAudio;
+    
 
     private bool isHitting;
     float timer;
     // Use this for initialization
     void Start () {
         timer = 0;
+        hitAudio = GetComponent<AudioSource>();
 	}
 
 
@@ -27,7 +30,11 @@ public class MeleeAttack : MonoBehaviour {
                 collision.gameObject.SendMessage("TakeDamage", damage);
                 isHitting = true;
                 timer = meleeCooldown;
-               
+                if (hitAudio!= null)
+                {
+                    hitAudio.Play();
+                }
+
             }
         }
     }
