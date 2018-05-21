@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour {
 
     private void Start()
     {
-        Time.timeScale = 0;
+        Time.timeScale = 0.0001f;
     }
     public void StartGame()
     {
@@ -21,12 +21,13 @@ public class GameManager : MonoBehaviour {
 
     public void PauseGame()
     {
-        Time.timeScale = 0;
+        Time.timeScale = 0.0001f;
         pauseCanvas.SetActive(true);
     }
 
     public void ResumeGame()
     {
+        Debug.Log("Resumed");
         Time.timeScale = 1;
         gameCanvas.SetActive(true);
         pauseCanvas.SetActive(false);
