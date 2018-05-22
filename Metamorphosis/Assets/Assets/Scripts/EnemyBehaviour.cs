@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyBehaviour : MonoBehaviour {
 
@@ -8,7 +9,7 @@ public class EnemyBehaviour : MonoBehaviour {
     private int maxHealth;
     public GameObject powerOrbPrefab;
     public GameObject deathExplosionPrefab;
-    public RectTransform healthBar;
+    public Slider healthBar;
     public GameObject soundObject;
 
     SpriteRenderer sr;
@@ -31,7 +32,6 @@ public class EnemyBehaviour : MonoBehaviour {
         {
             health -= damage;
             sr.color = new Color(2, 0, 0);
-            healthBar.sizeDelta = new Vector2(health / (maxHealth / 100), healthBar.sizeDelta.y);
             _timeColliding = damageTime;
 
             if (soundObject != null)
@@ -63,6 +63,7 @@ public class EnemyBehaviour : MonoBehaviour {
             _timeColliding = 0;
         }
 
+        healthBar.value = health / (maxHealth / 100);
     }
 }
 
