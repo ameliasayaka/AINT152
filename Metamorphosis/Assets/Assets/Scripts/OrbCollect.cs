@@ -11,6 +11,7 @@ public class OrbCollect : MonoBehaviour {
     {
         if(collision.gameObject.tag == "Player")
         {
+            //sets saved level to next level
             gameManager.GetComponent<GameManager>().SaveLevel((SceneManager.GetActiveScene().buildIndex + 1));
             SceneManager.LoadScene("Victory");
         }

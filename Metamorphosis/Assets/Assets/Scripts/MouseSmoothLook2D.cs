@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// sets game object to face cursor position
 public class MouseSmoothLook2D : MonoBehaviour {
     public Camera theCamera;
     public float smoothing = 5.0f;

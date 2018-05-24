@@ -131,7 +131,7 @@ bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.Audi
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
 c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingCollider
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
-2679e8d34bb656c234c5b16904490d20 Assembly-CSharp.dll:.SmoothFollow2D
+620899118381eef9f68a401b55b960e3 Assembly-CSharp.dll:.SmoothFollow2D
 ad0f126fcba09821bc39d20a791e1921 Assembly-CSharp.dll:Pathfinding.NodeLink2
 7eda268dd4f999c3ada4e1c31de05a28 Assembly-CSharp.dll:.AstarPath
 dd5481137759597d614818793c90a7fe Assembly-CSharp.dll:.TopDownCharacterController2D
@@ -171,7 +171,6 @@ b2f30289b62608d0eb29a49e78b06150 Assembly-CSharp.dll:Pathfinding.Examples.MineBo
 e0f7ffd5d5c2abe4b2e16569a21163da UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioRoom
 e0f7ffd5d5c2abe4b2e16569a21163da UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioRoom
 7c5cbc3b208a201b37351b7b6aa77c07 Assembly-CSharp.dll:Pathfinding.Examples.MineBotAI
-8442a45976a7f7b0823ea46f52c6fdea Assembly-CSharp.dll:.DamagePlayer
 bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.AudioSpatializerMicrosoft
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInput
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
@@ -196,5 +195,4 @@ b807d416ed1e4827ed012a75c2ab224e Assembly-CSharp.dll:Pathfinding.DynamicGridObst
 2b5f78ae02d395515be6954e58e8476b Assembly-CSharp.dll:.GameManager
 d0dded66b4790932f283ce432d298e3b Assembly-CSharp.dll:.DestroySelf
 ee1d2c6324c79655f4a0289a7c6f8658 Assembly-CSharp.dll:.MyScriptableObjectClass
-1ee47048d700dd00b56f643026953707 Assembly-CSharp.dll:.MoveTowardObject
 01dc1b7c4a97fb7f80c426a618a01eb6 Assembly-CSharp.dll:.SlowingProjectileHit

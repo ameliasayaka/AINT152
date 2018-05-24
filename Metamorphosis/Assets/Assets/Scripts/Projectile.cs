@@ -10,6 +10,7 @@ public class Projectile : MonoBehaviour {
     public bool isSlowing = false;
 
     private Collider2D objectCollider;
+
     // Use this for initialization
     void Start()
     {
@@ -27,6 +28,7 @@ public class Projectile : MonoBehaviour {
         CancelInvoke("Die");
     }
 
+    //changes projectile collision to Trigger
     void BecomeOnTrigger()
     {
         speed = 0;
@@ -38,13 +40,13 @@ public class Projectile : MonoBehaviour {
     {
         if (speed > 0)
         {
-            speed -= speedReduction;
+            speed -= speedReduction; //reduces projectile speed
         }
         else
         {
             if (isSlowing)
             {
-                BecomeOnTrigger();
+                BecomeOnTrigger(); //only becomes on trigger if slowing projectile
             }
         }
         GetComponent<Rigidbody2D>().velocity = transform.up * speed;

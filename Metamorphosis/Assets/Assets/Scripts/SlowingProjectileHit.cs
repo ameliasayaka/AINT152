@@ -9,22 +9,23 @@ public class SlowingProjectileHit : MonoBehaviour {
     public string damageTag = "";
     public float slowAmount = 5;
     public GameObject slowVictim;
-
-    float timer;
     public float damageTime = 3.0f;
 
+    float timer;
     private float maxSpeed;
+
     private void Start()
     {
         maxSpeed = slowVictim.GetComponent<TopDownCharacterController2D>().speed;
         timer = 0;
     }
 
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == damageTag)
         {
-            SendMessage("BecomeOnTrigger");
+            SendMessage("BecomeOnTrigger"); //sends message to game object to become on trigger 
         }
     }
   
@@ -39,7 +40,7 @@ public class SlowingProjectileHit : MonoBehaviour {
             else
             {
                 other.SendMessage("TakeDamage", damage);
-                other.GetComponent<TopDownCharacterController2D>().speed /= slowAmount;
+                other.GetComponent<TopDownCharacterController2D>().speed /= slowAmount; //reduce target speed
 
                 timer = 0;
             }
@@ -52,7 +53,7 @@ public class SlowingProjectileHit : MonoBehaviour {
     {
         if(other.CompareTag(damageTag))
         {
-            other.GetComponent<TopDownCharacterController2D>().speed = maxSpeed; 
+            other.GetComponent<TopDownCharacterController2D>().speed = maxSpeed; //set target speed back to normal
         }
     }
 }

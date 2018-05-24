@@ -11,28 +11,28 @@ public class EnemyBehaviour : MonoBehaviour {
     public GameObject deathExplosionPrefab;
     public Slider healthBar;
     public GameObject soundObject;
-
-    SpriteRenderer sr;
-
-    float _timeColliding;
     public float damageTime = 3.0f;
 
+    SpriteRenderer sr;
+    float timeColliding;
 
     private void Start()
     {
         sr = GetComponent<SpriteRenderer>();
         maxHealth = health;
-        _timeColliding = 0;
+        timeColliding = 0;
 
       
     }
+
     public void TakeDamage(int damage)
     {
-       if(_timeColliding == 0)
+       if(timeColliding == 0)
         {
             health -= damage;
+            //sets colour to red
             sr.color = new Color(2, 0, 0);
-            _timeColliding = damageTime;
+            timeColliding = damageTime;
 
             if (soundObject != null)
             {
@@ -46,6 +46,7 @@ public class EnemyBehaviour : MonoBehaviour {
 
             Destroy(gameObject);
 
+            //spawn explosion and power orb
             Instantiate(deathExplosionPrefab, transform.position, newRot);
             Instantiate(powerOrbPrefab, transform.position, newRot);
         }
@@ -53,16 +54,19 @@ public class EnemyBehaviour : MonoBehaviour {
 
     private void FixedUpdate()
     {
+        //sets colour back to  original
         sr.color = Color.Lerp(sr.color, Color.white, Time.deltaTime);
-        if (_timeColliding > 0)
+
+        if (timeColliding > 0)
         {
-            _timeColliding -= Time.deltaTime;
+            timeColliding -= Time.deltaTime;
         }
-        else if(_timeColliding < 0)
+        else if(timeColliding < 0)
         {
-            _timeColliding = 0;
+            timeColliding = 0;
         }
 
+        //update health bar
         healthBar.value = health / (maxHealth / 100);
     }
 }

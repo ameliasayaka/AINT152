@@ -8,22 +8,22 @@ public class EnvironmentDamage : MonoBehaviour {
     public float damageTime = 3.0f;
     public string targetTag = "Enemy";
 
-    float _timeColliding;
+    float timeColliding;
 
 
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag == targetTag)
         {
-            if (_timeColliding < damageTime)
+            if (timeColliding < damageTime)
             {
-                _timeColliding += Time.deltaTime;
+                timeColliding += Time.deltaTime;
             }
             else
             {
                 collision.gameObject.SendMessage("TakeDamage", damage);
                 // Reset timer
-                _timeColliding = 0f;
+                timeColliding = 0f;
             }
         }
     }

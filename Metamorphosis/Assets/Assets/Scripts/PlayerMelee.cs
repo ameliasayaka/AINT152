@@ -30,14 +30,18 @@ public class PlayerMelee : MonoBehaviour {
         GetComponent<Animator>().SetBool("isHitting", false);
     }
 
+    //method for melee hit
     void Melee()
     {
         isHitting = true;
         iconScript.coolingDown = true;
         Invoke("SetHit", meleeCooldown);
     }
+
+    //checks for collision during melee attack, sends message for enemy to take damage
     private void OnTriggerStay2D(Collider2D collision)
     {
+        //hitAlready makes sure no constant damage
         if (isHitting && !hitAlready)
         {
             if (collision.tag == targetTag)
@@ -50,13 +54,14 @@ public class PlayerMelee : MonoBehaviour {
     // Update is called once per frame
     void FixedUpdate()
     {
-            if(Input.GetKeyDown(KeyCode.Alpha2))
+        //call melee is right mouse button clicked and not already hitting
+            if(Input.GetMouseButtonDown(1))
             {
                 if (isHitting == false)
                 {
                     Melee();
                     GetComponent<Animator>().SetBool("isHitting", true);
-            }
+                }
             }
     }
 }

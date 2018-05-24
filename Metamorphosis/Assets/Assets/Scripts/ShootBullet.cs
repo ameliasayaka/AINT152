@@ -7,7 +7,6 @@ public class ShootBullet : MonoBehaviour {
 
     public GameObject bulletPrefab;
     public Transform bulletSpawn;
-    //public Transform bulletSpawn2;
     public float fireTime = 0.5f;
     public Image cooldownIcon;
 
@@ -18,6 +17,7 @@ public class ShootBullet : MonoBehaviour {
         cooldownIcon.GetComponent<SkillCooldownIcon>().cooldownTime = fireTime;
     }
 
+    //sets firing and cooling down to false
     void SetFiring()
     {
         isFiring = false;
@@ -29,19 +29,14 @@ public class ShootBullet : MonoBehaviour {
         isFiring = true;
         cooldownIcon.GetComponent<SkillCooldownIcon>().coolingDown = true;
         Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
-        //Instantiate(bulletPrefab, bulletSpawn2.position, bulletSpawn2.rotation);
-
-        //if (GetComponent<AudioSource>() != null)
-        //{
-        //    GetComponent<AudioSource>().Play();
-        //}
 
         Invoke("SetFiring", fireTime);
     }
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetKeyDown(KeyCode.Alpha1))
+        //if left mouse clicked and not already firing/cooling down fire
+		if(Input.GetMouseButtonDown(0))
         {
             if (!isFiring)
             {

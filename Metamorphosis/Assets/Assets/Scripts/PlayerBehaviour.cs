@@ -7,14 +7,9 @@ using UnityEngine.UI;
 public class PlayerBehaviour : MonoBehaviour {
 
     float timer;
-    public float damageTime = 3.0f;
-    
+    public float damageTime = 3.0f;  
     public Slider playerHealthSlider;
- 
-
-    public int health = 100;
-  
-   
+    public int health = 100; 
 
     private Animator moveAnim;
     SpriteRenderer sr;
@@ -36,6 +31,7 @@ public class PlayerBehaviour : MonoBehaviour {
         else
         {
             health -= damage;
+            //sets gameObject colour to red
             sr.color = new Color(2, 0, 0);
             timer = damageTime;
         }
@@ -65,6 +61,8 @@ public class PlayerBehaviour : MonoBehaviour {
             GetComponent<Animator>().SetBool("isMoving", false);
             GetComponent<AudioSource>().Pause();
         }
+
+        //gradually returns gameObject to original colour
         sr.color = Color.Lerp(sr.color, Color.white, Time.deltaTime);
         playerHealthSlider.value = health;
     }

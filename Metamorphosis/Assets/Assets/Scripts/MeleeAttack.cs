@@ -7,11 +7,11 @@ public class MeleeAttack : MonoBehaviour {
     public int damage;
     public string targetTag = "";
     public float meleeCooldown = 2.0f;
-    AudioSource hitAudio;
-    
 
+    AudioSource hitAudio;
     private bool isHitting;
     float timer;
+
     // Use this for initialization
     void Start () {
         timer = 0;
@@ -27,9 +27,10 @@ public class MeleeAttack : MonoBehaviour {
             if (timer == 0)
             {
                 GetComponent<Animator>().SetBool("isHitting", true);
-                collision.gameObject.SendMessage("TakeDamage", damage);
+                collision.gameObject.SendMessage("TakeDamage", damage); //sends message to target to take damage
                 isHitting = true;
                 timer = meleeCooldown;
+
                 if (hitAudio!= null)
                 {
                     hitAudio.Play();
